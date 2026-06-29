@@ -1,0 +1,37 @@
+name: voicenote
+description: VoiceNote — 智慧離線語音筆記 APP（完全離線的語音辨識 + 自動章節摘要）。
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 狀態管理
+  provider: ^6.1.2
+
+  # 本地資料層（資料層 — Room 等價：SQLite）
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
+  path_provider: ^2.1.4
+
+  # 錄音 / 播放（邏輯層）
+  record: ^5.1.2
+  just_audio: ^0.9.40
+  permission_handler: ^11.3.1
+
+  # 匯出 / 分享（Markdown）
+  share_plus: ^10.0.2
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

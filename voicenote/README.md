@@ -54,33 +54,37 @@ lib/
 
 ## 4. 執行方式
 
-> 本倉庫只含 `lib/`、`test/`、`pubspec.yaml` 等跨平台原始碼，未含各平台殼層。
-> 首次取得後請先產生平台專案：
+### 環境需求
+- **Flutter 3.44 以上**（stable channel）、Dart 3.3+
+- **JDK 17 以上**（Android 端 AGP 9 / Gradle 9.1 的最低需求）
+- Android SDK（建議透過 Android Studio 安裝）；如要建置 iOS 則需 macOS + Xcode
+- 首次執行需連網（下載辨識模型與 Gradle）
+
+### 執行
+平台殼層（android / ios / web 等）與麥克風 / 網路權限皆已包含於倉庫，clone 後即可執行：
 
 ```bash
-cd voicenote
-flutter create .          # 產生 android/ios/web 等平台資料夾（不會覆蓋既有 lib/ 與 pubspec）
+git clone https://github.com/wei979/APP_Homework.git
+cd APP_Homework/voicenote
 flutter pub get
-flutter run               # 連上裝置或模擬器
+flutter run               # 連上實機或模擬器
 ```
 
 開箱即用：首次啟動會自動注入示範資料（含「資料結構 第 3 章」5 章節 18 重點），
 可直接瀏覽列表、開啟詳情、點重點跳轉、匯出 Markdown。
 
-### 權限設定
+> 若你的 Flutter 版本較舊、Gradle / AGP 無法同步，可刪除 `android/` 後執行
+> `flutter create .` 重新產生符合你環境的平台殼層，再於 `AndroidManifest.xml`
+> 補回 `RECORD_AUDIO` 與 `INTERNET` 兩項權限。
 
-錄音需要麥克風權限，`flutter create` 後請補上：
+### 首次執行注意
+- 第一次語音辨識會自動下載中文辨識模型（約 230 MB，需網路，請稍候）。
+- 在模擬器錄音前，請到 Extended controls → Microphone 開啟 host 音訊輸入。
+- 重點心智圖需連網並使用你自己的 Gemini 金鑰（見 §6）。
 
-- **Android** `android/app/src/main/AndroidManifest.xml`（`<manifest>` 內）：
-  ```xml
-  <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-  ```
-  並確認 `android/app/build.gradle` 的 `minSdkVersion` ≥ 23。
-- **iOS** `ios/Runner/Info.plist`：
-  ```xml
-  <key>NSMicrophoneUsageDescription</key>
-  <string>需要麥克風以進行課堂錄音與離線辨識</string>
-  ```
+### 權限（已內含，無需手動設定）
+倉庫的 `android/app/src/main/AndroidManifest.xml` 已宣告 `RECORD_AUDIO` 與
+`INTERNET`；若改建置 iOS，`ios/Runner/Info.plist` 需含 `NSMicrophoneUsageDescription`。
 
 ## 5. 離線語音辨識（sherpa-onnx，預設）
 

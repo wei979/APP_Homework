@@ -307,12 +307,12 @@ class _MainButton extends StatelessWidget {
       child: Container(
         width: 76,
         height: 76,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColors.error,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-              color: const Color(0x1FBA1A1A),
+              color: Color(0x1FBA1A1A),
               blurRadius: 0,
               spreadRadius: 6,
             ),

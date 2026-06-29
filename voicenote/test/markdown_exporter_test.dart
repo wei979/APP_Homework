@@ -12,11 +12,11 @@ void main() {
       durationMs: 3138000, // 52:18
       audioPath: '',
       chapters: [
-        Chapter(
+        const Chapter(
           title: '堆疊 Stack 簡介',
           startMs: 0,
           orderIndex: 0,
-          bullets: const [
+          bullets: [
             Bullet(
               text: '後進先出 LIFO 是堆疊最核心的特性',
               timestampMs: 42000, // 00:42

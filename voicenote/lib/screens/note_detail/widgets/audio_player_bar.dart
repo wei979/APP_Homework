@@ -53,13 +53,13 @@ class AudioPlayerBar extends StatelessWidget {
             ),
           ),
           SliderTheme(
-            data: SliderThemeData(
+            data: const SliderThemeData(
               trackHeight: 4,
               activeTrackColor: AppColors.primary,
               inactiveTrackColor: AppColors.surfaceContainerHighest,
               thumbColor: AppColors.primary,
-              overlayShape: const RoundSliderOverlayShape(overlayRadius: 14),
-              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 6),
+              overlayShape: RoundSliderOverlayShape(overlayRadius: 14),
+              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6),
             ),
             child: Slider(
               value: frac,

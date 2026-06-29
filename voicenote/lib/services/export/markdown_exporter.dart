@@ -30,7 +30,7 @@ class MarkdownExporter {
         ..writeln('## [${DurationFormat.hms(c.startMs)}] ${c.title}')
         ..writeln();
       for (final bullet in c.bullets) {
-        b.writeln('- \`${DurationFormat.hms(bullet.timestampMs)}\` ${bullet.text}');
+        b.writeln('- `${DurationFormat.hms(bullet.timestampMs)}` ${bullet.text}');
       }
       b.writeln();
     }

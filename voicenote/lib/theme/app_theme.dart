@@ -45,7 +45,7 @@ class AppTheme {
         scrolledUnderElevation: 0,
         centerTitle: false,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: AppColors.surfaceContainerLow,
         surfaceTintColor: Colors.transparent,
         elevation: 0,

@@ -237,7 +237,7 @@ class _LiveTranscript extends StatelessWidget {
             child: SingleChildScrollView(
               reverse: true,
               child: Text(
-                text.isEmpty ? '開始錄音後，這裡會即時顯示離線辨識的文字…' : text,
+                text.isEmpty ? '錄音中…停止後會離線辨識並自動整理成章節重點' : text,
                 style: TextStyle(
                   fontSize: 13,
                   height: 1.7,

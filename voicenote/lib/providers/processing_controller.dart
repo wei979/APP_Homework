@@ -32,14 +32,23 @@ class ProcessingController extends ChangeNotifier {
   Object? _error;
   Object? get error => _error;
 
+  String? _detail;
+  String? get statusDetail => _detail;
+
   Future<void> run() async {
     try {
       _setStage(ProcessingStage.savingAudio);
       await Future<void>.delayed(const Duration(milliseconds: 500));
 
       _setStage(ProcessingStage.recognizing);
+      final statusSub = services.recognizer.setupStatus?.listen((s) {
+        _detail = s.isEmpty ? null : s;
+        _notify();
+      });
       final segments = await services.recognizer
           .transcribeFile(audioPath, totalDurationMs: durationMs);
+      await statusSub?.cancel();
+      _detail = null;
 
       _setStage(ProcessingStage.summarizing);
       final note = services.processor.buildNote(

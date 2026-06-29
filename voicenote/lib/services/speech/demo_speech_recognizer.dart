@@ -50,6 +50,9 @@ class DemoSpeechRecognizer implements SpeechRecognizer {
   Stream<SpeechResult> get liveResults => _live.stream;
 
   @override
+  Stream<String>? get setupStatus => null;
+
+  @override
   Future<void> initialize() async {}
 
   @override

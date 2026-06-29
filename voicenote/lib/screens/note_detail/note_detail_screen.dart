@@ -11,6 +11,7 @@ import '../../providers/player_provider.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
 import '../../utils/duration_format.dart';
+import '../mind_map/mind_map_screen.dart';
 import 'widgets/audio_player_bar.dart';
 import 'widgets/chapter_card.dart';
 
@@ -87,6 +88,11 @@ class _NoteDetailScreenState extends State<NoteDetailScreen> {
               style: const TextStyle(
                   fontSize: 17, fontWeight: FontWeight.w500)),
           actions: [
+            IconButton(
+              tooltip: '重點心智圖',
+              onPressed: _openMindMap,
+              icon: const Icon(Icons.account_tree_outlined),
+            ),
             IconButton(
               tooltip: '書籤',
               onPressed: _toggleBookmark,
@@ -166,6 +172,18 @@ class _NoteDetailScreenState extends State<NoteDetailScreen> {
           duration: const Duration(seconds: 2),
         ),
       );
+  }
+
+  Future<void> _openMindMap() async {
+    final note = _note!;
+    final ms = await Navigator.of(context).push<int>(
+      MaterialPageRoute(builder: (_) => MindMapScreen(note: note)),
+    );
+    if (ms != null && mounted) {
+      _player!.jumpAndPlay(ms);
+      setState(() => _highlightedTs = ms);
+      _toast('已跳轉至  ・ 開始播放');
+    }
   }
 
   Future<void> _toggleBookmark() async {

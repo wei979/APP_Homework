@@ -98,6 +98,14 @@ class _ProcessingViewState extends State<_ProcessingView> {
                 label: '產生筆記',
                 state: _stateOf(c, ProcessingStage.generating),
               ),
+              if (c.statusDetail != null) ...[
+                const SizedBox(height: 12),
+                Text(
+                  c.statusDetail!,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 12, color: AppColors.primary),
+                ),
+              ],
               const Spacer(),
               if (c.error != null)
                 Text('處理失敗：${c.error}',

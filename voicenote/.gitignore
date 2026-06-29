@@ -12,3 +12,5 @@ ios/Pods/
 android/.gradle/
 *.lock
 !pubspec.lock
+# Kotlin incremental build artifacts (AGP 9)
+android/.kotlin/

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -182,8 +183,12 @@ class _NoteDetailScreenState extends State<NoteDetailScreen> {
     final note = _note!;
     switch (action) {
       case _MenuAction.exportMarkdown:
+        {
+          final path = await services.exporter.exportToFile(note);
+          _toast('已匯出 Markdown：${p.basename(path)}');
+        }
       case _MenuAction.share:
-        await services.exporter.share(note);
+        await services.exporter.shareFile(note);
       case _MenuAction.exportAudio:
         if (note.audioPath.isEmpty || !File(note.audioPath).existsSync()) {
           _toast('此筆記沒有可匯出的原始錄音檔');

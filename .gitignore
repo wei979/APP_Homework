@@ -13,3 +13,5 @@
 *.iml
 .DS_Store
 Thumbs.db
+# 專案計劃書等 Word 文件不納入版控
+*.docx

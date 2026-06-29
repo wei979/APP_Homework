@@ -2,8 +2,7 @@
 
 > 114 學年第二學期 ・ APP 程式設計期末專案
 > 完全離線的語音辨識 + 自動章節摘要。錄音結束即自動產出「分章節的條列重點」，
-> 點任一重點可跳回原始錄音時間點。以 **Flutter / Dart** 實作，UI 1:1 對應
-> 設計稿《VoiceNote 操作流程概念圖》的 Material 3 墨綠主題。
+> 點任一重點可跳回原始錄音時間點。以 **Flutter / Dart** 實作。
 
 ---
 
@@ -14,7 +13,7 @@
 
 | 企劃書（Android 原生） | 本專案（Flutter） |
 | --- | --- |
-| 表現層 Jetpack Compose | `lib/screens/**`（Material 3 widget） |
+| 表現層 Jetpack Compose | `lib/screens/**` |
 | 邏輯層 Vosk + TextRank + Coroutines | `lib/services/**`（辨識抽象 / 純 Dart TextRank / 章節切分） |
 | 資料層 Room (SQLite) | `lib/data/**`（`sqflite`） |
 | 音訊 WAV 私有目錄 | `record` 以 16kHz mono WAV 存於 App 私有目錄 |
@@ -26,7 +25,7 @@
 
 ```
 lib/
-├── theme/         墨綠 Material 3 主題（色票/圓角 1:1 對應設計稿 token）
+├── theme/         App 主題與樣式定義
 ├── models/        Note / Chapter / Bullet / TranscriptSegment
 ├── data/          AppDatabase(sqflite) · NoteDao · NoteRepository · SeedData
 ├── services/
